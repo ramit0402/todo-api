@@ -26,3 +26,5 @@ app.post('/todos', (request, response) => {
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
+
+module.exports = {app};
