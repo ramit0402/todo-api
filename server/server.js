@@ -25,11 +25,24 @@ app.post('/todos', (request, response) => {
 
 app.get('/todos', (request, response) => {
   Todo.find().then((todos) => {
-    response.send({todos})
+    response.send({todos});
   }, (error) => {
     response.status(400).send(error);
   });
 });
+
+app.get('/todos/:id', (request, response) => {
+  var id = request.params.id;
+
+  Todo.findById(id).then((todo) => {
+    if(!todo) {
+      return response.status(404).send();
+    }
+    response.send({todo});
+  }, (error) => {
+    return response.status(400).send();
+  });
+})
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
