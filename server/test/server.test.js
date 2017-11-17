@@ -30,7 +30,7 @@ describe('POST /todos', () => {
       .expect((response) => {
         expect(response.body.text).toBe(text);
       })
-      .end((error, respose) => {
+      .end((error, response) => {
         if(error) {
           return done(error);
         }
@@ -48,7 +48,7 @@ describe('POST /todos', () => {
       .post('/todos')
       .send({})
       .expect(400)
-      .end((error, respose) => {
+      .end((error, response) => {
         if(error) {
           return done(error);
         }
